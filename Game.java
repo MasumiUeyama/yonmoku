@@ -3,15 +3,15 @@ import java.io.IOException;
 import java.lang.InterruptedException;
 
 /**
- * O–Ú•À‚×‚ÌƒQ[ƒ€‚ğis‚ğ•\‚·ƒNƒ‰ƒXB
+ * ä¸‰ç›®ä¸¦ã¹ã®ã‚²ãƒ¼ãƒ ã‚’é€²è¡Œã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã€‚
  */
 public class Game extends java.awt.Frame
 {
     //--------------------------------
-    //ƒQ[ƒ€ƒNƒ‰ƒX‚Ìƒƒ\ƒbƒhi“®ìjB
+    //ã‚²ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆå‹•ä½œï¼‰ã€‚
     //--------------------------------
     /**
-     * ƒQ[ƒ€ƒNƒ‰ƒX‚ÌƒƒCƒ“B
+     * ã‚²ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚¤ãƒ³ã€‚
      */
     public static void main(java.lang.String[] args) throws java.io.IOException,
                                                             java.lang.reflect.InvocationTargetException,
@@ -22,63 +22,63 @@ public class Game extends java.awt.Frame
     {
 
         /**
-         * Å‘ås”=6B
+         * æœ€å¤§è¡Œæ•°=6ã€‚
          */
         final int MAX_LINE=6;
 
         /**
-         * Å‘å—ñ”=7B
+         * æœ€å¤§åˆ—æ•°=7ã€‚
          */
         final int MAX_COLUMN=7;
 
         /**
-         * –Ú”B
+         * ç›®æ•°ã€‚
          */
         final int WIN_MOKU=4;
 
         /**
-         * ‘Îíl”B
+         * å¯¾æˆ¦äººæ•°ã€‚
          */
         final int PLAYER_COUNT=2;
 
         /**
-         * ”ÕƒNƒ‰ƒX‚Ì’è‹`‚ÆƒCƒ“ƒXƒ^ƒ“ƒX‰»B
+         * ç›¤ã‚¯ãƒ©ã‚¹ã®å®šç¾©ã¨ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã€‚
          */
         Board board=new Board(MAX_LINE,MAX_COLUMN);
 
         /**
-         * R”»ƒNƒ‰ƒX‚Ì’è‹`‚ÆƒCƒ“ƒXƒ^ƒ“ƒX‰»B
+         * å¯©åˆ¤ã‚¯ãƒ©ã‚¹ã®å®šç¾©ã¨ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã€‚
          */
         Judge judge=new Judge(MAX_LINE,MAX_COLUMN);
 
         /**
-         * lŠÔƒNƒ‰ƒX‚Ì’è‹`‚ÆƒCƒ“ƒXƒ^ƒ“ƒX‰»B
+         * äººé–“ã‚¯ãƒ©ã‚¹ã®å®šç¾©ã¨ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã€‚
          */
-//        Player player[]={new Man("ƒIƒŒƒ“",board),new Man("ƒuƒ‹[",board)};
-//        Player player[]={new Man("ƒIƒŒƒ“",board),new Com("ƒuƒ‹[",1,judge)};
-//        Player player[]={new Com("ƒIƒŒƒ“",1,judge),new Man("ƒuƒ‹[",board)};
-        Player player[]={new Com("ƒIƒŒƒ“",1,judge),new Com("ƒuƒ‹[",1,judge)};
-//        Player player[]={new Com("ƒIƒŒƒ“",1,judge),new Comb("ƒuƒ‹[",1,judge)};
+        Player player[]={new Man("ã‚ªãƒ¬ãƒ³",board),new Man("ãƒ–ãƒ«ãƒ¼",board)};
+//        Player player[]={new Man("ã‚ªãƒ¬ãƒ³",board),new Com("ãƒ–ãƒ«ãƒ¼",1,judge)};
+//        Player player[]={new Com("ã‚ªãƒ¬ãƒ³",1,judge),new Man("ãƒ–ãƒ«ãƒ¼",board)};
+//        Player player[]={new Com("ã‚ªãƒ¬ãƒ³",1,judge),new Com("ãƒ–ãƒ«ãƒ¼",1,judge)};
+//        Player player[]={new Com("ã‚ªãƒ¬ãƒ³",1,judge),new Comb("ãƒ–ãƒ«ãƒ¼",1,judge)};
 
 
 
         boolean won=false;
         int  putEnabled;
-        board.setVisible(true);   //”Õ‚ğ•\¦‚·‚éiŒ©‚¦‚éó‘Ô‚É‚·‚éj
+        board.setVisible(true);   //ç›¤ã‚’è¡¨ç¤ºã™ã‚‹ï¼ˆè¦‹ãˆã‚‹çŠ¶æ…‹ã«ã™ã‚‹ï¼‰
         while((judge.count()<MAX_LINE*MAX_COLUMN)&&won!=true){
             int lineColumn;
             int line=0;
             int column;
             do{
                 int order=judge.count()%PLAYER_COUNT;
-                System.out.println(player[order].getPlayerName()+"‚³‚ñ");
+                System.out.println(player[order].getPlayerName()+"ã•ã‚“");
                 lineColumn=Integer.parseInt(player[order].play());
                 //line=lineColumn/10-1;
                 column=lineColumn%10-1;
-                String area[]=judge.getArea(); //judgeƒNƒ‰ƒX‚ÌgetArea
+                String area[]=judge.getArea(); //judgeã‚¯ãƒ©ã‚¹ã®getArea
                 
                 for(int i=5;i>=0;i--){ 
-                    if(area[column+7*i]=="E"){
+                    if(area[column+7*i]=="ãƒ»"){
                         line=i;
                         break;
                     }
@@ -98,8 +98,8 @@ public class Game extends java.awt.Frame
                 //System.out.println("line=" + line +"putEnabled=" + putEnabled);
             }
             catch(ArrayIndexOutOfBoundsException e){
-                System.out.println(line+"‚ª‚â‚Î‚¢\n");
-                //System.out.println(lineColumn+"‚ª‚ç‚¢‚É‚ç‚©‚ç\n");
+                System.out.println(line+"ãŒã‚„ã°ã„\n");
+                //System.out.println(lineColumn+"ãŒã‚‰ã„ã«ã‚‰ã‹ã‚‰\n");
             }
             catch(InterruptedException e){
                 System.out.println(line);
@@ -107,17 +107,17 @@ public class Game extends java.awt.Frame
 //line--;
 //column--;
             column++;
-            board.dispKifu(player[(judge.count()-1)%2].getPlayerName()+ "‚³‚ñ‚ª" + column + "—ñ‚É’u‚«‚Ü‚µ‚½B");
+            board.dispKifu(player[(judge.count()-1)%2].getPlayerName()+ "ã•ã‚“ãŒ" + column + "åˆ—ã«ç½®ãã¾ã—ãŸã€‚");
             column--;
             
             won=judge.judgeWon(order,WIN_MOKU);
         }
         if(won==true){
-            System.out.println(player[(judge.count()-1)%2].getPlayerName()+"‚³‚ñ‚ÌŸ‚¿‚Å‚·B");
-            board.dispKifu(player[(judge.count()-1)%2].getPlayerName()+"‚³‚ñ‚ÌŸ‚¿‚Å‚·B");
-
+            System.out.println(player[(judge.count()-1)%2].getPlayerName()+"ã•ã‚“ã®å‹ã¡ã§ã™ã€‚");
+            board.dispKifu(player[(judge.count()-1)%2].getPlayerName()+"ã•ã‚“ã®å‹ã¡ã§ã™ã€‚");
+            board.dispKifu("æº–å‚™ãŠã£ã‘ãƒ¼");
         }else{
-            System.out.println("ˆø‚«•ª‚¯‚Å‚·B");
+            System.out.println("å¼•ãåˆ†ã‘ã§ã™ã€‚");
         }
         
         
