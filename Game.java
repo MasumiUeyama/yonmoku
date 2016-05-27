@@ -54,10 +54,10 @@ public class Game extends java.awt.Frame
         /**
          * 人間クラスの定義とインスタンス化。
          */
-        Player player[]={new Man("オレン",board),new Man("ブルー",board)};
+//        Player player[]={new Man("オレン",board),new Man("ブルー",board)};
 //        Player player[]={new Man("オレン",board),new Com("ブルー",1,judge)};
 //        Player player[]={new Com("オレン",1,judge),new Man("ブルー",board)};
-//        Player player[]={new Com("オレン",1,judge),new Com("ブルー",1,judge)};
+        Player player[]={new Com("オレン",1,judge),new Com("ブルー",1,judge)};
 //        Player player[]={new Com("オレン",1,judge),new Comb("ブルー",1,judge)};
 
 
